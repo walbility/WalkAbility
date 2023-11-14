@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WalkAbility-LA</title>   
+    <link rel="shortcut icon" type="image/x-icon" href="Images\logo.svg"/>
+	
+	
+    <link href="Css\bootstrap.min.css" rel="stylesheet">
+    <link href="Css\bootstrap-icons.css" rel="stylesheet">
+    <link href="Css\Style.css" rel="stylesheet">
+
+    <script src="js\jquery.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
+    <script src="js\jquery.sticky.js"></script>
+    <script src="js\click-scroll.js"></script>
+    <script src="js\counter.js"></script>
+    <script src="js\custom.js"></script>
+
+
+    <link href="leaflet.css" rel="stylesheet">
+    <script src="leaflet.js"></script>
+    <link href="leaflet.legend.css" rel="stylesheet">
+    <script src="leaflet.legend.js"></script>
+    <script src="js\Js.js"></script>
+    
+    <link href="Leaflet.Coordinates-0.1.5.css" rel="stylesheet">
+    <script src="Leaflet.Coordinates-0.1.5.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="Control.FullScreen.css" />
+    <script src="Control.FullScreen.js"></script>
+    <link rel="stylesheet" href="Control.MiniMap.css" />
+    <script src="Control.MiniMap.js"></script>
+
+    <script src="connectivity.geojson"></script>
+    <script src="density.geojson"></script>
+    <script src="env.geojson"></script>
+    <script src="prox.geojson"></script>
+    <script src="DIVERISTY.geojson"></script>
+
+
+    <style>
+		#map {
+			width: 600px;
+			height: 400px;
+		}
+        .info {
+        padding: 6px 8px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+        background: white;
+        background: rgba(255,255,255,0.8);
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        }
+        .info h4 {
+        margin: 0 0 5px;
+        color: #777;
+        }
+	</style>
+    
+</head>
+<body>
+    <header class="site-header-second"></header>
+
+    <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="Images\logo.svg" class="logo img-fluid" alt="">
+                <span style="color:rgb(249, 130, 97)">
+                    W</span><span style="color:rgb(97, 96, 96)">alk</span><span style="color:rgb(249, 130, 97)">A</span><span style="color:rgb(97, 96, 96)">bility</span>
+                </span>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll"  href="#top">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_2">Connectivity Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll"  href="#section_3">Density Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll"  href="#section_4">Proximity Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll"  href="#section_5">Envernement Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll"  href="#section_6">Diversity Map</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link custom-btn custom-border-btn btn" style="color:Black;background-color:rgb(249, 130, 97);border: 4px solid rgb(150, 149, 149);" href="index11.html">WalkAbility Map</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section hero-section-full-height" >
+        <div class="row">
+            <div class="col-lg-12 col-12 p-0">
+                <div id="hero-slide" style="position: relative; text-align: center;">
+                    <img src="Images\1.jpg" class="image-with-shadow" alt="WALKABILTY">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                        <h1 style="background-color: rgba(249, 130, 97,0.6)">GEOPORTAIL</h1>
+                        <h3 style="color:rgb(249, 130, 97);"><strong>Walkability index : L.A City</strong></h3>
+                        <p style="color:white"><i>Discover the key elements of a walkability index,<br>how it is calculated,<br> and the benefits of fostering walkable communities.</i></p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-padding section-bg centered-div-flex" style="background-color:rgba(249, 130, 97,0.1)"  id="top">
+        <div class="container" style="background-color:white">
+            <div class="row justify-content-between">
+                <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
+                    <h6 class="section-title mb-0"><strong style="color:rgb(249, 130, 97);">Context</strong></h6>
+                    <p>"Walkability" refers to how easily people can
+                        walk in a given area, like a neighborhood or city.
+                        It includes factors like the proximity of
+                        destinations, the presence of sidewalks,
+                        pedestrian safety, and other elements that
+                        either facilitate or hinder walking as a mode of
+                        transportation</p>
+                    <img src="Images\carte.png" alt="" class="w-100 mt-3 shadow-sm">
+                </div>
+                <div class="col-md-6 pl-md-5">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="Images\1.jpg" alt="" class="w-100 shadow-sm">
+                        </div>
+                        <div class="col-6">
+                            <img src="Images\asilah.jpg" alt="" class="w-100 shadow-sm">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <p>->  A map allows for a quick and intuitive
+                                visual representation of areas with high or low walkability.
+                                This offers an immediate visual understanding of
+                                pedestrian friendliness in a given region.
+                                </p>
+                            <p>->  Walkability
+                                index maps highlight specific features contributing to
+                                pedestrian friendliness, such as population density,
+                                diversity, connectivity, proximity, etc. This helps identify
+                                strengths and weaknesses in different areas.
+                                .</p>
+                            <p>-> Local authorities, urban
+                                planners, and policymakers can use these maps to make
+                                informed decisions on urban planning. They can pinpoint
+                                areas that require pedestrian improvements and design
+                                policies to promote walkability.
+                                </p>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <section class="section-padding section-bg centered-div-flex" style="background-color:rgba(249, 130, 97,0.1)" id="section_2">
+        <div>
+            <div id="mymap" class="transparent-map section-padding " style="height: 400px; width: 380px;border:10px solid rgb(222, 221, 221)"></div>
+            <script>
+                var mymap = L.map('mymap').setView([34.0225084, -118.248208], 5.4);
+            
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+                attribution: '©OpenStreetMap, ©CartoDB'}).addTo(mymap);
+            
+                var epi = L.icon({
+                    iconUrl: 'Images\CENTRE.png',
+                    iconSize: [300, 300]
+                });
+            
+                L.marker([34.0225084, -118.248208], { icon: epi }).addTo(mymap).bindPopup('<p style="border: 1px solid black; padding: 3px;"><strong>Centre:<br></strong></p>');
+            </script>
+            
+            <div style="display: block;border:10px solid rgb(222, 221, 221);width:380px;text-align:center"> 
+                <p><strong style="color:rgb(249, 130, 97);">Connectivity index</strong></p>
+                <p>Seamless connections between destinations, reducing the need for car travel.</p>
+                <p><strong style="color:rgb(249, 130, 97);">Formulate:</strong></p>
+                <p>Connectivity = number of true intersections / km2 of land area </p> 
+                <p></p>
+            </div>
+        </div>
+
+        <div id="map" class="transparent-map" style="height: 665px; width: 1100px;"></div>
+        <script src="connectivity.geojson"></script>
+        <script>
+           var map = L.map('map').setView([34.0225084, -118.248208],10.3);
+       
+           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+           }).addTo(map);
+           function degradationcouleur(d) {
+                        return d >= -2.6389 && d < -1.067105 ? '#f1eef6' :
+                            d >= -1.067105 && d < -0.103353 ? '#d7b5d8' :
+                            d >= -0.103353 && d < 0.827581 ? '#df65b0' :
+                            d >= 0.827581 && d < 3.439713 ? '#dd1c77' :
+                            d >= 3.439713 && d <= 7.238352 ? '#980043' : // Adjusted the upper limit condition
+                            ''; // Default color if none of the conditions are met
+                    }
+
+           function styleatt(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: "white",
+                        dashArray: "3",
+                        fillOpacity: 0.9,
+                        fillColor: degradationcouleur(feature.properties.conv_noRrr),
+                        originalStyle: {
+                            weight: 0.5,
+                            opacity: 1,
+                            color: "white",
+                            dashArray: "3",
+                            fillOpacity: 0.9,
+                            fillColor: degradationcouleur(feature.properties.conv_noRrr)
+                        }
+                    };
+                }
+
+            function highlightFeature(e) {
+                var layer = e.target;
+                    layer.options.originalStyle = layer.options.originalStyle || layer.options.style;
+                
+                    layer.setStyle({
+                        weight: 5,
+                        color: "#666",
+                        dashArray: "",
+                        fillOpacity: 0.9
+                    });
+            }
+            function resetHighlight(e) {
+                var layer = e.target;
+                    // Check if the originalStyle is defined before resetting
+                    if (layer.options.originalStyle) {
+                            layer.setStyle(layer.options.originalStyle);
+                    }
+            }
+
+          function zoomToFeature(e) {
+           map.fitBounds(e.target.getBounds());
+           }
+          function onEachFeature(feature, layer) {
+           layer.on({
+               mouseover: highlightFeature,
+               mouseout: resetHighlight,
+               click: zoomToFeature
+           });
+           }
+           var info = L.control();
+       
+           info.onAdd = function (map) {
+           this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+           this.update();
+           return this._div;
+           };
+       
+           // method that we will use to update the control based on feature properties passed
+           
+
+           info.update = function (props) {
+           this._div.innerHTML = '<h4 style="color:black;">CONNECTIVITY INDEX:</h4>' +  (props ?
+               'value : <b>' + props.conv_noRrr + '</b> <br /> Value: ' + props.connectivi + '</sup>'
+               : 'Move the cursor over the map to get information');
+           };
+
+           info.addTo(map);
+        
+           
+           var geojson = L.geoJson(con, {
+           style: styleatt,
+           onEachFeature: onEachFeature
+           }).addTo(map);
+
+            var legend = L.control.Legend({
+            position: "bottomright",
+            collapsed: false,
+            symbolWidth: 40,
+            opacity: 1,
+            column: 2,
+            legends: [{
+                label: "[-2.6389  -1.067105[",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#f1eef6",
+                weight: 1
+            }, {
+                label: "[-1.067105  -0.103353[",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#d7b5d8",
+                weight: 1
+            }, {
+                label: "[-0.103353  0.827581[",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#df65b0",
+                weight: 1
+            }, {
+                label: "[0.827581  3.439713[",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#dd1c77",
+                weight: 1
+            }, {
+                label:"[3.439713  7.238352[",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#980043",
+                weight: 1
+            }]}).addTo(map);
+            L.control.coordinates({position:"bottomright",decimals:4,decimalSeperator:",",labelTemplateLat:"<strong>Latitude: {y}</strong>",labelTemplateLng:"<strong>Longitude: {x}</strong>"}).addTo(map);
+	        L.control.coordinates({position:"topright",useDMS:true,labelTemplateLat:"<strong>N {y}</strong>",labelTemplateLng:"<strong>E {x}</strong>",useLatLngOrder:true}).addTo(map);
+            var fsControl = L.control.fullscreen();
+		    map.addControl(fsControl);
+		    map.on('enterFullscreen', function(){
+			    if(window.console) window.console.log('enterFullscreen');
+		    });
+		    map.on('exitFullscreen', function(){
+			    if(window.console) window.console.log('exitFullscreen');
+		    });
+
+
+            var osm2 = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom: 0, attribution:'Map data &copy; OpenStreetMap contributors'});
+            var miniMap = new L.Control.MiniMap(osm2, {centerFixed: [34.0225084, -118.248208],zoomLevelFixed:2}).addTo(map);
+            miniMap.setPosition('bottomleft');
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <section class="section-padding section-bg centered-div-flex" style="background-color:rgba(249, 130, 97,0.1)" id="section_3">
+        <div>
+            <div id="mymap1" class="transparent-map section-padding " style="height: 400px; width: 380px;border:10px solid rgb(222, 221, 221)"></div>
+            <script>
+                var mymap1 = L.map('mymap1').setView([34.0225084, -118.248208], 5.4);
+            
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+                attribution: '©OpenStreetMap, ©CartoDB'}).addTo(mymap1);
+            
+                var epi = L.icon({
+                    iconUrl: 'Images\CENTRE.png',
+                    iconSize: [300, 300]
+                });
+            
+                L.marker([34.0225084, -118.248208], { icon: epi }).addTo(mymap1).bindPopup('<p style="border: 1px solid black; padding: 3px;"><strong>Centre:<br></strong></p>');
+            </script>
+            
+            <div style="display: block;border:10px solid rgb(222, 221, 221);width:380px;text-align: center;"> 
+                <p><strong style="color:rgb(249, 130, 97);">Density index</strong></p>
+                <p>Density measures the level of activity in an area-be it in terms of population, housing, or employment. It reflects compact land development and its correlation with reduced reliance on motorized transport in urban settings.</p>
+                <p><strong style="color:rgb(249, 130, 97);">Formula:</strong></p>
+                <p>Household Density = Number of households / km2 of residential land</p>
+            </div>
+        </div>
+
+        <div id="map1" class="transparent-map" style="height: 665px; width: 1100px;"></div>
+        <script src="density.geojson"></script>
+        <script>
+           var map1 = L.map('map1').setView([34.0225084, -118.248208],10.3);
+       
+           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+           }).addTo(map1);
+           function degradationcouleur(d) {
+                    return d >= -1.878440 && d < -0.827209 ? '#0868ac' :
+                        d >= -0.827209  && d < 0.00274 ? '#43a2ca' :
+                        d >= 0.00274 && d < 0.873684 ? '#7bccc4' :
+                        d >= 0.873684 && d < 2.065959 ? '#bae4bc' :
+                        d >= 2.065959 && d <= 4.237654 ? '#f0f9e8' : // Adjusted the upper limit condition
+                            ''; // Default color if none of the conditions are met
+            };
+
+
+            function styleatt(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: "white",
+                        dashArray: "3",
+                        fillOpacity: 0.9,
+                        fillColor: degradationcouleur(feature.properties.density_no),
+                        originalStyle: {
+                            weight: 0.5,
+                            opacity: 1,
+                            color: "white",
+                            dashArray: "3",
+                            fillOpacity: 0.9,
+                            fillColor: degradationcouleur(feature.properties.density_no)
+                        }
+                    };
+                }
+
+            function highlightFeature(e) {
+                var layer = e.target;
+                    layer.options.originalStyle = layer.options.originalStyle || layer.options.style;
+                
+                    layer.setStyle({
+                        weight: 5,
+                        color: "#666",
+                        dashArray: "",
+                        fillOpacity: 0.9
+                    });
+            }
+            function resetHighlight(e) {
+                var layer = e.target;
+                    // Check if the originalStyle is defined before resetting
+                    if (layer.options.originalStyle) {
+                            layer.setStyle(layer.options.originalStyle);
+                    }
+            };
+
+          function zoomToFeature(e) {
+           map.fitBounds(e.target.getBounds());
+           }
+          function onEachFeature(feature, layer) {
+           layer.on({
+               mouseover: highlightFeature,
+               mouseout: resetHighlight,
+               click: zoomToFeature
+           });
+           }
+           var info = L.control();
+       
+           info.onAdd = function (map1) {
+           this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+           this.update();
+           return this._div;
+           };
+       
+           // method that we will use to update the control based on feature properties passed
+           info.update = function (props) {
+           this._div.innerHTML = '<h4 style="color:black;">DENSITY INDEX:</h4>' +  (props ?
+               'value : <b>' + props.density_no + '</sup>'
+               : 'Move the cursor over the map to get information');
+           };
+       
+           info.addTo(map1);
+        
+           
+           var geojson = L.geoJson(dens, {
+           style: styleatt,
+           onEachFeature: onEachFeature
+           }).addTo(map1);
+ 
+            var legend = L.control.Legend({
+            position: "bottomright",
+            collapsed: false,
+            symbolWidth: 40,
+            opacity: 1,
+            column: 2,
+            legends: [{
+                label: "[-1.878440 , -0.827209 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#0868ac",
+                weight: 2
+            }, {                                                                            
+                label: "[-0.827209 , 0.00274 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#43a2ca",
+                weight: 2
+            }, {
+                label: "[0.00274 , 0.873684 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#7bccc4",
+                weight: 2
+            }, {
+                label: "[0.873684 , 2.065959 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#bae4bc",
+                weight: 2
+            }, {
+                label:"[2.065959 , 4.237654[",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#f0f9e8",
+                weight: 2
+            }]}).addTo(map1);
+            L.control.coordinates({position:"bottomright",decimals:4,decimalSeperator:",",labelTemplateLat:"<strong>Latitude: {y}</strong>",labelTemplateLng:"<strong>Longitude: {x}</strong>"}).addTo(map1);
+	        L.control.coordinates({position:"topright",useDMS:true,labelTemplateLat:"<strong>N {y}</strong>",labelTemplateLng:"<strong>E {x}</strong>",useLatLngOrder:true}).addTo(map1);
+            var fsControl = L.control.fullscreen();
+		    map1.addControl(fsControl);
+		    map1.on('enterFullscreen', function(){
+			    if(window.console) window.console.log('enterFullscreen');
+		    });
+		    map1.on('exitFullscreen', function(){
+			    if(window.console) window.console.log('exitFullscreen');
+		    });
+
+
+            var osm1 = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom: 0, attribution:'Map data &copy; OpenStreetMap contributors'});
+            var miniMap1 = new L.Control.MiniMap(osm1, {centerFixed: [34.0225084, -118.248208],zoomLevelFixed:2}).addTo(map1);
+            miniMap1.setPosition('bottomleft');
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+    <section class="section-padding section-bg centered-div-flex" style="background-color:rgba(249, 130, 97,0.1)" id="section_4">
+        <div>
+            <div id="mymap2" class="transparent-map section-padding " style="height: 400px; width: 380px;border:10px solid rgb(222, 221, 221)"></div>
+            <script>
+                var mymap2 = L.map('mymap2').setView([34.0225084, -118.248208], 5.4);
+            
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+                attribution: '©OpenStreetMap, ©CartoDB'}).addTo(mymap2);
+            
+                var epi = L.icon({
+                    iconUrl: 'Images\CENTRE.png',
+                    iconSize: [300, 300]
+                });
+            
+                L.marker([34.0225084, -118.248208], { icon: epi }).addTo(mymap2).bindPopup('<p style="border: 1px solid black; padding: 3px;"><strong>Centre:<br></strong></p>');
+            </script>
+            
+            <div style="display: block;border:10px solid rgb(222, 221, 221);width:380px; text-align: center;"> 
+                <p><strong style="color:rgb(249, 130, 97);">Proximity index</strong></p>
+                <p>Proximity describes the number and variety of destinations within a specified distance (buffer) of any location.</p>
+                <p><strong style="color:rgb(249, 130, 97);">Formula:</strong></p>
+                <p>Buffers</p>
+            </div>
+        </div>
+
+        <div id="map2" class="transparent-map" style="height: 665px; width: 1100px;"></div>
+        <script src="prox.geojson"></script>
+        <script>
+           var map2 = L.map('map2').setView([34.0225084, -118.248208],10.3);
+       
+           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+           }).addTo(map2);
+
+           function degradationcouleur(d) {
+                return d >= -1.510555 && d < -0.839551 ? '#CC6666' :
+                            d >= -0.839551 && d < -0.175385 ? '#993333' :
+                            d >= -0.175385 && d < 0.569688 ? '#660000' :
+                            d >= 0.569688 && d < 1.727389 ? '#330000' :
+                            d >= 1.727389 && d <= 4.194951 ? '#FFCCCC' : // Adjusted the upper limit condition
+                            ''; // Default color if none of the conditions are met
+            }
+
+            function styleatt(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: "white",
+                        dashArray: "3",
+                        fillOpacity: 0.9,
+                        fillColor: degradationcouleur(feature.properties.proximity),
+                        originalStyle: {
+                            weight: 0.5,
+                            opacity: 1,
+                            color: "white",
+                            dashArray: "3",
+                            fillOpacity: 0.9,
+                            fillColor: degradationcouleur(feature.properties.proximity)
+                        }
+                    };
+                }
+
+            function highlightFeature(e) {
+                var layer = e.target;
+                    layer.options.originalStyle = layer.options.originalStyle || layer.options.style;
+                
+                    layer.setStyle({
+                        weight: 5,
+                        color: "#666",
+                        dashArray: "",
+                        fillOpacity: 0.9
+                    });
+            }
+            function resetHighlight(e) {
+                var layer = e.target;
+                    // Check if the originalStyle is defined before resetting
+                    if (layer.options.originalStyle) {
+                            layer.setStyle(layer.options.originalStyle);
+                    }
+            };
+
+
+          function zoomToFeature(e) {
+           map.fitBounds(e.target.getBounds());
+           }
+          function onEachFeature(feature, layer) {
+           layer.on({
+               mouseover: highlightFeature,
+               mouseout: resetHighlight,
+               click: zoomToFeature
+           });
+           }
+           var info = L.control();
+       
+           info.onAdd = function (map2) {
+           this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+           this.update();
+           return this._div;
+           };
+       
+           // method that we will use to update the control based on feature properties passed
+           info.update = function (props) {
+           this._div.innerHTML = '<h4 style="color:black;">PROXIMITY INDEX:</h4>' +  (props ?
+               'value : <b>' + props.proximity + '</sup>'
+               : 'Move the cursor over the map to get information');
+           };
+       
+           info.addTo(map2);
+        
+           
+           var geojson = L.geoJson(prox, {
+           style: styleatt,
+           onEachFeature: onEachFeature
+           }).addTo(map2);
+ 
+           var legend = L.control.Legend({
+            position: "bottomright",
+            collapsed: false,
+            symbolWidth: 40,
+            opacity: 1,
+            column: 2,
+            legends: [{
+                label: "[-1.510555 , -0.839551 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#CC6666",
+                weight: 2
+            }, {
+                label: "[-0.175385 , 0.569688 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#660000",
+                weight: 2
+            }, {
+                label: "[0.569688 , 1.727389 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#330000",
+                weight: 2
+            }, {
+                label: "[1.727389 , 4.194951 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#FFCCCC",
+                weight: 2
+            }]}).addTo(map2);
+            L.control.coordinates({position:"bottomright",decimals:4,decimalSeperator:",",labelTemplateLat:"<strong>Latitude: {y}</strong>",labelTemplateLng:"<strong>Longitude: {x}</strong>"}).addTo(map2);
+	        L.control.coordinates({position:"topright",useDMS:true,labelTemplateLat:"<strong>N {y}</strong>",labelTemplateLng:"<strong>E {x}</strong>",useLatLngOrder:true}).addTo(map2);
+            var fsControl = L.control.fullscreen();
+		    map2.addControl(fsControl);
+		    map2.on('enterFullscreen', function(){
+			    if(window.console) window.console.log('enterFullscreen');
+		    });
+		    map2.on('exitFullscreen', function(){
+			    if(window.console) window.console.log('exitFullscreen');
+		    });
+
+
+            var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom: 0, attribution:'Map data &copy; OpenStreetMap contributors'});
+            var miniMap2 = new L.Control.MiniMap(osm, {centerFixed: [34.0225084, -118.248208],zoomLevelFixed:2}).addTo(map2);
+            miniMap2.setPosition('bottomleft');
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="section-padding section-bg centered-div-flex" style="background-color:rgba(249, 130, 97,0.1)" id="section_5">
+        <div>
+            <div id="mymap3" class="transparent-map section-padding " style="height: 400px; width: 380px;border:10px solid rgb(222, 221, 221)"></div>
+            <script>
+                var mymap3 = L.map('mymap3').setView([34.0225084, -118.248208], 5.4);
+            
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+                attribution: '©OpenStreetMap, ©CartoDB'}).addTo(mymap3);
+            
+                var epi = L.icon({
+                    iconUrl: 'Images\CENTRE.png',
+                    iconSize: [300, 300]
+                });
+            
+                L.marker([34.0225084, -118.248208], { icon: epi }).addTo(mymap3).bindPopup('<p style="border: 1px solid black; padding: 3px;"><strong>Centre:<br></strong></p>');
+            </script>
+            
+            <div style="display: block;border:10px solid rgb(222, 221, 221);width:380px;text-align: center;"> 
+                <p><strong style="color:rgb(249, 130, 97);">Envirnement index</strong></p>
+                <p>Access to sidewalks, crosswalks, and well-maintained pathways</p>
+                <p><strong style="color:rgb(249, 130, 97);">Formulate:</strong></p>
+                <p>The ratio of sidewalk coverage in square meters (m2 ) to the street-roadbed coverage in square meters (m2 ) was calculated for each census tract.</p>
+            </div>
+        </div>
+
+        <div id="map3" class="transparent-map" style="height: 665px; width: 1100px;"></div>
+        <script src="prox.geojson"></script>
+        <script>
+           var map3 = L.map('map3').setView([34.0225084, -118.248208],10.3);
+       
+           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+           }).addTo(map3);
+
+           function degradationcouleur(d) {
+                return d >= -0.49669 && d < 0.093099 ? '#006837':
+                            d >= 0.093099 && d < 1.218486 ? '#31a354' :
+                            d >= 1.218486 && d < 3.410113 ? '#78c679' :
+                            d >= 3.410113 && d < 7.134927 ? '#c2e699' :
+                            d >= 7.134928 && d <= 15.606170 ? '#ffffcc' : // Adjusted the upper limit condition
+                            ''; // Default color if none of the conditions are met
+           }
+
+           
+           function styleatt(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: "white",
+                        dashArray: "3",
+                        fillOpacity: 0.9,
+                        fillColor: degradationcouleur(feature.properties.INDICE_1),
+                        originalStyle: {
+                            weight: 0.5,
+                            opacity: 1,
+                            color: "white",
+                            dashArray: "3",
+                            fillOpacity: 0.9,
+                            fillColor: degradationcouleur(feature.properties.INDICE_1)
+                        }
+                    };
+                }
+
+            function highlightFeature(e) {
+                var layer = e.target;
+                    layer.options.originalStyle = layer.options.originalStyle || layer.options.style;
+                
+                    layer.setStyle({
+                        weight: 5,
+                        color: "#666",
+                        dashArray: "",
+                        fillOpacity: 0.9
+                    });
+            }
+            function resetHighlight(e) {
+                var layer = e.target;
+                    // Check if the originalStyle is defined before resetting
+                    if (layer.options.originalStyle) {
+                            layer.setStyle(layer.options.originalStyle);
+                    }
+            };
+          function zoomToFeature(e) {
+           map.fitBounds(e.target.getBounds());
+           }
+          function onEachFeature(feature, layer) {
+           layer.on({
+               mouseover: highlightFeature,
+               mouseout: resetHighlight,
+               click: zoomToFeature
+           });
+           }
+           var info = L.control();
+       
+           info.onAdd = function (map3) {
+           this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+           this.update();
+           return this._div;
+           };
+       
+           // method that we will use to update the control based on feature properties passed
+           info.update = function (props) {
+           this._div.innerHTML = '<h4 style="color:black;">ENVERNMENT INDEX:</h4>' +  (props ?
+               'value : <b>' + props.INDICE_1 + '</sup>'
+               : 'Move the cursor over the map to get information');
+           };
+       
+           info.addTo(map3);
+        
+           
+           var geojson = L.geoJson(env, {
+           style: styleatt,
+           onEachFeature: onEachFeature
+           }).addTo(map3);
+ 
+           var legend = L.control.Legend({
+            position: "bottomright",
+            collapsed: false,
+            symbolWidth: 40,
+            opacity: 1,
+            column: 2,
+            legends: [{
+                label: "[-0.49669 , 0.093099 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#006837",
+                weight: 2
+            }, {
+                label: "[ 0.093099 , 1.218486 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#31a354",
+                weight: 2
+            }, {
+                label: "[1.218486 , 3.410113 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#78c679",
+                weight: 2
+            }, {
+                label: "[3.410113 , 7.134927[",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#c2e699",
+                weight: 2
+            },{
+                label: "[7.134928 , 15.606170 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#ffffcc",
+                weight: 2
+            }
+        ]}).addTo(map3);
+            L.control.coordinates({position:"bottomright",decimals:4,decimalSeperator:",",labelTemplateLat:"<strong>Latitude: {y}</strong>",labelTemplateLng:"<strong>Longitude: {x}</strong>"}).addTo(map3);
+	        L.control.coordinates({position:"topright",useDMS:true,labelTemplateLat:"<strong>N {y}</strong>",labelTemplateLng:"<strong>E {x}</strong>",useLatLngOrder:true}).addTo(map3);
+            var fsControl = L.control.fullscreen();
+		    map3.addControl(fsControl);
+		    map3.on('enterFullscreen', function(){
+			    if(window.console) window.console.log('enterFullscreen');
+		    });
+		    map3.on('exitFullscreen', function(){
+			    if(window.console) window.console.log('exitFullscreen');
+		    });
+
+
+            var osm3 = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom: 0, attribution:'Map data &copy; OpenStreetMap contributors'});
+            var miniMap3 = new L.Control.MiniMap(osm3, {centerFixed: [34.0225084, -118.248208],zoomLevelFixed:2}).addTo(map3);
+            miniMap3.setPosition('bottomleft');
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="section-padding section-bg centered-div-flex" style="background-color:rgba(249, 130, 97,0.1)" id="section_6">
+        <div>
+            <div id="mymap4" class="transparent-map section-padding " style="height: 400px; width: 380px;border:10px solid rgb(222, 221, 221)"></div>
+            <script>
+                var mymap4 = L.map('mymap4').setView([34.0225084, -118.248208], 5.4);
+            
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+                attribution: '©OpenStreetMap, ©CartoDB'}).addTo(mymap4);
+            
+                var epi = L.icon({
+                    iconUrl: 'Images\CENTRE.png',
+                    iconSize: [300, 300]
+                });
+            
+                L.marker([34.0225084, -118.248208], { icon: epi }).addTo(mymap4).bindPopup('<p style="border: 1px solid black; padding: 3px;"><strong>Centre:<br></strong></p>');
+            </script>
+            
+            <div style="display: block;border:10px solid rgb(222, 221, 221);width:380px;text-align:center;"> 
+                <p><strong style="color:rgb(249, 130, 97);">Diversity index</strong></p>
+                <p>A mix of residential, commercial, and recreational spaces within walking distance.</p>
+                <p><strong style="color:rgb(249, 130, 97);">Formulate:</strontext-align:center;g></p>
+                <p>using entropy index</p>
+            </div>
+        </div>
+
+        <div id="map4" class="transparent-map" style="height: 665px; width: 1100px;"></div>
+        <script src="DIVERISTY.geojson"></script>
+        <script>
+           var map4 = L.map('map4').setView([34.0225084, -118.248208],10.3);
+       
+           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+           }).addTo(map4);
+
+           function degradationcouleur(d) {
+            return d >= 0 && d < 0.229942 ? '#CC6666' :
+                        d >= 0.229942 && d < 0.387624 ? '#993333' :
+                        d >= 0.387625 && d < 0.514584 ? '#660000' :
+                        d >= 0.514584 && d < 0.633264 ? '#330000' :
+                        d >= 0.633264 && d <= 0.823808 ? '#FFCCCC' : // Adjusted the upper limit condition
+                        ''; // Default color if none of the conditions are met
+            }
+
+            function styleatt(feature) {
+                    return {
+                        weight: 0.5,
+                        opacity: 1,
+                        color: "white",
+                        dashArray: "3",
+                        fillOpacity: 0.9,
+                        fillColor: degradationcouleur(feature.properties.entropy2),
+                        originalStyle: {
+                            weight: 0.5,
+                            opacity: 1,
+                            color: "white",
+                            dashArray: "3",
+                            fillOpacity: 0.9,
+                            fillColor: degradationcouleur(feature.properties.entropy2)
+                        }
+                    };
+                }
+
+            function highlightFeature(e) {
+                var layer = e.target;
+                    layer.options.originalStyle = layer.options.originalStyle || layer.options.style;
+                
+                    layer.setStyle({
+                        weight: 5,
+                        color: "#666",
+                        dashArray: "",
+                        fillOpacity: 0.9
+                    });
+            }
+            function resetHighlight(e) {
+                var layer = e.target;
+                    // Check if the originalStyle is defined before resetting
+                    if (layer.options.originalStyle) {
+                            layer.setStyle(layer.options.originalStyle);
+                    }
+            };
+
+
+          function zoomToFeature(e) {
+           map.fitBounds(e.target.getBounds());
+           }
+          function onEachFeature(feature, layer) {
+           layer.on({
+               mouseover: highlightFeature,
+               mouseout: resetHighlight,
+               click: zoomToFeature
+           });
+           }
+           var info = L.control();
+       
+           info.onAdd = function (map4) {
+           this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+           this.update();
+           return this._div;
+           };
+       
+           // method that we will use to update the control based on feature properties passed
+           info.update = function (props) {
+           this._div.innerHTML = '<h4 style="color:black;">DIVERSITY INDEX:</h4>' +  (props ?
+               'value : <b>' + props.entropy2 + '</sup>'
+               : 'Move the cursor over the map to get information');
+           };
+       
+           info.addTo(map4);
+        
+           
+           var geojson = L.geoJson(diver, {
+           style: styleatt,
+           onEachFeature: onEachFeature
+           }).addTo(map4);
+ 
+           var legend = L.control.Legend({
+            position: "bottomright",
+            collapsed: false,
+            symbolWidth: 40,
+            opacity: 1,
+            column: 2,
+            legends: [{
+                label: "[ 0 , 0.229942 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#CC6666",
+                weight: 2
+            }, {
+                label: "[ 0.229942 , 0.387624  [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#660000",
+                weight: 2
+            }, {
+                label: "[0.387625  0.514584  [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#330000",
+                weight: 2
+            }, {
+                label: "[0.514584 , 0.633264 [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#FFCCCC",
+                weight: 2
+            },{
+                label: "[0.633264 , 0.823808  [",
+                type: "polygon",
+                sides: 4,
+                color: "#000000",
+                fillColor: "#330000",
+                weight: 2
+            }
+        ]}).addTo(map4);
+            L.control.coordinates({position:"bottomright",decimals:4,decimalSeperator:",",labelTemplateLat:"<strong>Latitude: {y}</strong>",labelTemplateLng:"<strong>Longitude: {x}</strong>"}).addTo(map4);
+	        L.control.coordinates({position:"topright",useDMS:true,labelTemplateLat:"<strong>N {y}</strong>",labelTemplateLng:"<strong>E {x}</strong>",useLatLngOrder:true}).addTo(map4);
+            var fsControl = L.control.fullscreen();
+		    map4.addControl(fsControl);
+		    map4.on('enterFullscreen', function(){
+			    if(window.console) window.console.log('enterFullscreen');
+		    });
+		    map4.on('exitFullscreen', function(){
+			    if(window.console) window.console.log('exitFullscreen');
+		    });
+
+
+            var osm4 = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom: 0, attribution:'Map data &copy; OpenStreetMap contributors'});
+            var miniMap4 = new L.Control.MiniMap(osm4, {centerFixed: [34.0225084, -118.248208],zoomLevelFixed:2}).addTo(map4);
+            miniMap4.setPosition('bottomleft');
+        </script>
+    </section>
+
+    
+
+</body>
+</html>

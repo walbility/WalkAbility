@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tourisme national</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <!--<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico">--> 
+
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+    crossorigin=""/>
+
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+    crossorigin="">
+</script>
+
+
+  <style>
+    #map {
+      width: 100;
+      height: 100vh;
+    }
+  </style>
+
+  <style>
+    #map {
+      width: 100;
+      height: 100vh;
+    }
+    .info {
+      padding: 6px 8px;
+      font: 14px/16px Arial, Helvetica, sans-serif;
+      background: white;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+    .info h4 {
+      margin: 0 0 5px;
+      color: #777;
+    }
+    .legend {
+      text-align: left;
+      line-height: 18px;
+      color: #555;
+    }
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map" ></div>
+
+  <script type="text/javascript" src="Regions.js"></script>
+
+
+  <script type="text/javascript">
+    var map = L.map("map").setView([28.337, -9.400], 5);
+
+    var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
+    
+
+    // control that shows state info on hover
+    var info = L.control();
+
+    info.onAdd = function(map) {
+      this._div = L.DomUtil.create("div", "info");
+      this.update();
+      return this._div;
+    };
+
+    info.update = function(props) {
+      this._div.innerHTML =
+        "<h4>Tourisme National:Répartition régionale des arrivées dans les établissements (2021) </h4>" + (props ? 
+        "<b>" + props.Nom_Region + "</b><br />" + props.T_National + " arrivées dans les établissements classés"
+          : "Survoler une région");
+    };
+
+    info.addTo(map);
+
+    // get color depending on population density value
+    function getColor(d) {
+        return d >= 12160 && d < 30057 ? '#eff3ff' :
+                        d >= 30057 && d < 72779 ? '#bdd7e7' :
+                            d >= 72779 && d < 158690 ? '#6baed6' :
+                                d >= 158690 && d < 218484 ? '#3182bd' :
+                                    d >= 218484 && d < 303355 ? '#08519c' :
+                                                 '' ;
+    }
+
+    function style(feature) {
+      return {
+        weight: 2,
+        opacity: 1,
+        color: "white",
+        dashArray: "3",
+        fillOpacity: 0.9,
+        fillColor: getColor(feature.properties.T_National)
+      };
+    }
+
+    function highlightFeature(e) {
+      var layer = e.target;
+
+      layer.setStyle({
+        weight: 5,
+        color: "#666",
+        dashArray: "",
+        fillOpacity: 0.7
+      });
+
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+
+      info.update(layer.feature.properties);
+    }
+
+    var geojson;
+
+    function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+      info.update();
+    }
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+      });
+    }
+
+    geojson = L.geoJson(vaxData, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+
+    map.attributionControl.addAttribution('Source de données : Haut Commissariat au Plan; <a href="https://www.hcp.ma/downloads/Annuaire-Statistique-du-Maroc-format-Excel_t22392.html">Annuaire Statistique du Maroc</a>');
+
+    var legend = L.control({ position: "bottomright" });
+
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create("div", "info legend"),
+        grades = [0, 5, 7, 15, 30],
+        labels = [],
+        from,
+        to;
+
+      for (var i = 0; i < grades.length; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+
+        labels.push(
+          '<i style="background:' +
+            getColor(from + 1) +
+            '"></i> ' +
+            from +
+            (to ? "&ndash;" + to : "+")
+        );
+      }
+
+      div.innerHTML = labels.join("<br>");
+      return div;
+    };
+
+    legend.addTo(map);
+  </script>
+</body>
+</html>
